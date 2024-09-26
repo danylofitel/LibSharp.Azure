@@ -32,7 +32,7 @@ namespace LibSharp.Azure.UnitTests.ApplicationInsights
                 });
 
             // Act
-            using (IActivity activity = new ApplicationInsightsActivity(telemetryClient, name))
+            using (ApplicationInsightsActivity activity = new ApplicationInsightsActivity(telemetryClient, name))
             {
                 telemetryClient.Received(1).TrackEvent($"{name}_Started", Arg.Is<IDictionary<string, string>>(_ => _ != null), null);
                 Assert.AreEqual(1, telemetryClient.ReceivedCalls().Count());
@@ -82,7 +82,7 @@ namespace LibSharp.Azure.UnitTests.ApplicationInsights
                 });
 
             // Act
-            using (IActivity activity = new ApplicationInsightsActivity(telemetryClient, name))
+            using (ApplicationInsightsActivity activity = new ApplicationInsightsActivity(telemetryClient, name))
             {
                 telemetryClient.Received(1).TrackEvent($"{name}_Started", Arg.Is<IDictionary<string, string>>(_ => _ != null), null);
                 Assert.AreEqual(1, telemetryClient.ReceivedCalls().Count());
